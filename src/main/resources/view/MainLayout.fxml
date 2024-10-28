@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane fx:id="ancMain" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.MainLayoutController">
+    <children>
+      <AnchorPane fx:id="ancPage" layoutX="60.0" prefHeight="400.0" prefWidth="540.0" />
+      <Pane prefHeight="400.0" prefWidth="60.0" style="-fx-background-color: black;">
+         <children>
+            <ImageView fx:id="imageCategory" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-category-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageCust" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-customers-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageBook" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-book-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageWriter" fitHeight="25.0" fitWidth="25.0" layoutX="15.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-writer-96%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageOrder" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-order-64%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageSell" fitHeight="30.0" fitWidth="25.0" layoutX="17.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-sell-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageReturn" fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-return-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageEmployee" fitHeight="25.0" fitWidth="25.0" layoutX="16.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-employees-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageSave" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-save-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageHome" fitHeight="20.0" fitWidth="20.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-dashboard-64.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageSetting" fitHeight="25.0" fitWidth="25.0" layoutX="18.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-setting-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageLogout" fitHeight="25.0" fitWidth="25.0" layoutX="18.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8-log-out-96.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
