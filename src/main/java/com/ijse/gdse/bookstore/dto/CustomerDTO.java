@@ -8,9 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 public class CustomerDTO {
-    private String colcustId;
-    private String colname;
-    private String colnic;
-    private String colemail;
-    private String colphone;
+    private String colID;
+    private String colName;
+    private String colEmail;
+    private String colPhone;
 }

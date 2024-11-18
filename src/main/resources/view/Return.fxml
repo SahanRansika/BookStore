@@ -1,99 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Return">
+<AnchorPane fx:id="ancReturn" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.ReturnController">
    <children>
-      <Label layoutX="237.0" layoutY="28.0" text="Manage Return" underline="true">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="59.0" text="Return Id">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="93.0" text="Book Id">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="124.0" text="Book Name">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="54.0" layoutY="157.0" text="Discription">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField layoutX="161.0" layoutY="87.0" />
-      <TextField layoutX="161.0" layoutY="120.0" />
-      <TextField layoutX="161.0" layoutY="153.0" />
-      <Label layoutX="161.0" layoutY="58.0" text="R001">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="274.0" layoutY="187.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Update">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="366.0" layoutY="187.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Delete">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="459.0" layoutY="187.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Save">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <TableView layoutX="34.0" layoutY="241.0" prefHeight="160.0" prefWidth="543.0">
+      <TableView fx:id="tblReturn" layoutX="33.0" layoutY="320.0" onMouseClicked="#onClickTable" prefHeight="366.0" prefWidth="1004.0">
         <columns>
-          <TableColumn prefWidth="57.60003662109375" text="Return Id" />
-          <TableColumn prefWidth="56.0" text="Book Id" />
-            <TableColumn prefWidth="73.5999755859375" text="Book Name" />
-            <TableColumn prefWidth="70.4000244140625" text="Discription" />
-            <TableColumn prefWidth="61.5999755859375" text="Category" />
-            <TableColumn prefWidth="67.20001220703125" text="Writer" />
-            <TableColumn prefWidth="60.800048828125" text="Quantity" />
-            <TableColumn prefWidth="91.9999877929688" text="Price" />
+          <TableColumn fx:id="colID" prefWidth="122.40002059936523" text="Return Id" />
+          <TableColumn fx:id="colBookID" prefWidth="139.1999969482422" text="Book Id" />
+            <TableColumn fx:id="colName" prefWidth="237.5999755859375" text="Name" />
+            <TableColumn fx:id="colIssueDate" prefWidth="256.79998779296875" text="Issue Date" />
+            <TableColumn fx:id="colDueDate" prefWidth="249.5999755859375" text="Due Date" />
         </columns>
       </TableView>
-      <Label layoutX="330.0" layoutY="59.0" text="Category">
+      <Label layoutX="298.0" layoutY="93.0">
          <font>
             <Font name="Gill Sans Ultra Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="330.0" layoutY="93.0" text="Writer">
+      <Label layoutX="730.0" layoutY="26.0" text="Manage Return" textFill="#0c86d1">
          <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="403.0" layoutY="53.0" />
-      <TextField layoutX="403.0" layoutY="88.0" />
-      <Label layoutX="330.0" layoutY="124.0" text="Quantity">
+      <ImageView fitHeight="22.0" fitWidth="22.0" layoutX="690.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bookstore%20(11).png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="63.0" layoutY="45.0" prefHeight="198.0" prefWidth="906.0">
+         <children>
+            <HBox prefHeight="38.0" prefWidth="726.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="100.0" text="Return Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblReturnId" prefHeight="38.0" prefWidth="100.0" text="1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="38.0" prefWidth="506.0" spacing="200.0">
+               <children>
+                  <HBox prefHeight="34.0" prefWidth="338.0" spacing="40.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="100.0" text="Customer Id">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmbCustomerId" onAction="#cmbCustomerOnAction" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="38.0" prefWidth="364.0" spacing="40.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="150.0" text="Customer name">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblCustomerName" prefHeight="30.0" prefWidth="150.0" text="name" textFill="#0c86d1">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="520.0" spacing="200.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="419.0" spacing="40.0">
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="100.0" text="Book Id">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cmbBookId" onAction="#cmbBookOnAction" prefWidth="150.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="447.0" spacing="40.0">
+                     <children>
+                        <Label prefHeight="31.0" prefWidth="150.0" text="Book name">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblBookName" prefHeight="30.0" prefWidth="150.0" text="name" textFill="#0c86d1">
+                           <font>
+                              <Font name="Calibri" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="520.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="100.0" text="Issue Date">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbIssueYear" onAction="#cmbIssueYearOnAction" prefWidth="70.0" promptText="Year" />
+                  <ComboBox fx:id="cmbIssueMonth" onAction="#cmbIssueMonthOnAction" prefHeight="26.0" prefWidth="84.0" promptText="Month" />
+                  <ComboBox fx:id="cmbIssueDay" onAction="#cmbIssueDayOnAction" prefHeight="26.0" prefWidth="64.0" promptText="Day" />
+               </children>
+            </HBox>
+            <HBox prefHeight="34.0" prefWidth="470.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="38.0" prefWidth="100.0" text="Due Date">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbDueYear" onAction="#cmbDueYearOnAction" prefWidth="70.0" promptText="Year" />
+                  <ComboBox fx:id="cmbDueMonth" onAction="#cmbDueMonthOnAction" prefHeight="26.0" prefWidth="84.0" promptText="Month" />
+                  <ComboBox fx:id="cmbDueDay" onAction="#cmbDueDayOnAction" prefHeight="26.0" prefWidth="64.0" promptText="Day" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="734.0" layoutY="258.0" prefHeight="42.0" prefWidth="302.0" spacing="450.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnAddToReturnOnAction" prefHeight="42.0" prefWidth="256.0" style="-fx-background-color: #2d72f2;" text="Add To Return" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Button fx:id="btnPlaceReturn" layoutX="781.0" layoutY="706.0" mnemonicParsing="false" onAction="#btnPlaceReturnOnAction" prefHeight="42.0" prefWidth="256.0" style="-fx-background-color: blue;" text="Place Return" textFill="WHITE">
          <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
-      </Label>
-      <Label layoutX="333.0" layoutY="157.0" text="Price">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField layoutX="402.0" layoutY="120.0" />
-      <TextField layoutX="402.0" layoutY="153.0" />
+      </Button>
+      <DatePicker fx:id="IssueDate" layoutX="139.0" layoutY="267.0" />
    </children>
 </AnchorPane>

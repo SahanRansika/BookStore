@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ancCustomer" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.CustomerController">
+   <children>
+      <Label layoutX="730.0" layoutY="34.0" text="Manage Customer" textFill="#0c86d1">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="690.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bookstore%20(8).png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblCustomer" layoutX="85.0" layoutY="366.0" onMouseClicked="#onClickTable" prefHeight="406.0" prefWidth="1000.0">
+        <columns>
+          <TableColumn fx:id="colID" prefWidth="172.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="264.0" text="Name" />
+            <TableColumn fx:id="colEmail" prefWidth="319.20001220703125" text="Email" />
+            <TableColumn fx:id="colPhone" prefWidth="244.79995727539062" text="Phone" />
+        </columns>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" layoutX="618.0" layoutY="316.0" prefHeight="26.0" prefWidth="467.0" spacing="20.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #2d72f2;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="85.0" layoutY="89.0" prefHeight="216.0" prefWidth="542.0">
+         <children>
+            <HBox prefHeight="38.0" prefWidth="542.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="150.0" text="Customer Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCustomer" prefHeight="26.0" prefWidth="57.0" text="1" />
+               </children>
+            </HBox>
+            <HBox prefHeight="42.0" prefWidth="542.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="43.0" prefWidth="41.0" text="Name">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtName" prefHeight="26.0" prefWidth="487.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="41.0" prefWidth="542.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="43.0" prefWidth="42.0" text="Email">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtEmail" prefHeight="26.0" prefWidth="490.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="542.0" spacing="10.0">
+               <children>
+                  <Label prefHeight="53.0" prefWidth="42.0" text="Phone">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPhone" prefHeight="26.0" prefWidth="486.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

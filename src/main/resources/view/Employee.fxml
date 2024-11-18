@@ -5,73 +5,115 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancEmployee" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Employee">
+<AnchorPane fx:id="ancEmployee" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.EmployeeController">
    <children>
-      <Label layoutX="202.0" layoutY="14.0" text="Manage Employee" underline="true">
+      <Label layoutX="730.0" layoutY="26.0" text="Manage Employee" textFill="#0c86d1">
          <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
+            <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblName" layoutX="24.0" layoutY="66.0" text="Name">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblSalary" layoutX="22.0" layoutY="102.0" text="Salary">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="21.0" layoutY="168.0" text="step">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblEmployeeId" layoutX="24.0" layoutY="37.0" text="Employee Id">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="21.0" layoutY="138.0" text="Holiday count">
-         <font>
-            <Font name="Gill Sans Ultra Bold" size="12.0" />
-         </font>
-      </Label>
-      <TableView layoutX="38.0" layoutY="246.0" prefHeight="154.0" prefWidth="520.0">
+      <TableView fx:id="tblEmployee" layoutX="43.0" layoutY="339.0" onMouseClicked="#onClickTable" prefHeight="438.0" prefWidth="973.0">
         <columns>
-          <TableColumn prefWidth="99.20001220703125" text="Employee Id" />
-          <TableColumn prefWidth="111.99993896484375" text="Name" />
-            <TableColumn prefWidth="109.60003662109375" text="Salary" />
-            <TableColumn prefWidth="93.5999755859375" text="Holiday Count" />
-            <TableColumn prefWidth="108.79998779296875" text="Step" />
+          <TableColumn fx:id="colID" prefWidth="135.20000839233398" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="145.6000213623047" text="Name" />
+            <TableColumn fx:id="colPhone" prefWidth="232.80001831054688" text="Phone" />
+            <TableColumn fx:id="colPosition" prefWidth="223.20001220703125" text="Position" />
+            <TableColumn fx:id="colSalary" prefWidth="238.4000244140625" text="Salary" />
         </columns>
       </TableView>
-      <TextField fx:id="txtName" layoutX="109.0" layoutY="62.0" />
-      <TextField fx:id="txtSalary" layoutX="109.0" layoutY="96.0" />
-      <TextField layoutX="108.0" layoutY="163.0" />
-      <TextField layoutX="140.0" layoutY="130.0" prefHeight="26.0" prefWidth="104.0" />
-      <Label layoutX="136.0" layoutY="37.0" text="E001">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="327.0" layoutY="210.0" mnemonicParsing="false" text="Update">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="403.0" layoutY="210.0" mnemonicParsing="false" text="Delete">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="478.0" layoutY="210.0" mnemonicParsing="false" text="Save">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
+      <ImageView fitHeight="26.0" fitWidth="29.0" layoutX="690.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bookstore (9).png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="55.0" layoutY="77.0" prefHeight="200.0" prefWidth="701.0">
+         <children>
+            <HBox prefHeight="35.0" prefWidth="546.0">
+               <children>
+                  <Label prefHeight="41.0" prefWidth="100.0" text="Employee Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblEmployee" prefHeight="41.0" prefWidth="100.0" text="1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="491.0">
+               <children>
+                  <Label prefHeight="41.0" prefWidth="100.0" text="Name">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtName" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="500.0">
+               <children>
+                  <Label prefHeight="37.0" prefWidth="100.0" text="Phone">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPhone" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="500.0">
+               <children>
+                  <Label prefHeight="50.0" prefWidth="100.0" text="Position">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtPosition" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="35.0" prefWidth="500.0">
+               <children>
+                  <Label prefHeight="51.0" prefWidth="100.0" text="Salary">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtSalary" prefHeight="25.0" prefWidth="500.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="617.0" layoutY="289.0" prefHeight="25.0" prefWidth="400.0" spacing="20.0">
+         <children>
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #2d72f2;" text="Update" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #2d72f2;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #2d72f2;" text="Save" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

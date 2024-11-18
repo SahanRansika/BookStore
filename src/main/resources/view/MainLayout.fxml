@@ -4,73 +4,63 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="ancMain" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.MainLayoutController">
-    <children>
-      <AnchorPane fx:id="ancPage" layoutX="60.0" prefHeight="400.0" prefWidth="540.0" />
-      <Pane prefHeight="400.0" prefWidth="60.0" style="-fx-background-color: black;">
+<AnchorPane fx:id="ancMain" prefHeight="800.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.MainLayoutController">
+   <children>
+      <Pane layoutY="-1.0" prefHeight="800.0" prefWidth="60.0" style="-fx-background-color: #2d72f2;">
          <children>
-            <ImageView fx:id="imageCategory" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+            <VBox layoutX="10.0" layoutY="14.0" prefHeight="456.0" prefWidth="42.0" spacing="30.0">
+               <children>
+                  <ImageView fx:id="btnDashBoard" fitHeight="28.0" fitWidth="24.0" onMouseClicked="#btnDashBoardOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(44).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnCustomer" fitHeight="27.0" fitWidth="29.0" onMouseClicked="#btnCustomerOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(43).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnBook" fitHeight="30.0" fitWidth="32.0" onMouseClicked="#btnBookOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(4).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnCategory" fitHeight="23.0" fitWidth="27.0" onMouseClicked="#btnCategoryOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/category.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnEmployee" fitHeight="27.0" fitWidth="25.0" onMouseClicked="#btnEmployeeOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(45).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnUser" fitHeight="27.0" fitWidth="25.0" onMouseClicked="#btnUserOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(62).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnOrder" fitHeight="29.0" fitWidth="26.0" onMouseClicked="#btnOrderOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(48).png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="btnReturn" fitHeight="28.0" fitWidth="26.0" onMouseClicked="#btnReturnOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/bookstore%20(17).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <ImageView fx:id="btnLogOut" fitHeight="27.0" fitWidth="35.0" layoutX="18.0" layoutY="737.0" onMouseClicked="#btnLogOutOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/icons8-category-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageCust" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-customers-64.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageBook" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-book-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageWriter" fitHeight="25.0" fitWidth="25.0" layoutX="15.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-writer-96%20(1).png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageOrder" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-order-64%20(2).png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageSell" fitHeight="30.0" fitWidth="25.0" layoutX="17.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-sell-64.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageReturn" fitHeight="20.0" fitWidth="20.0" layoutX="20.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-return-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageEmployee" fitHeight="25.0" fitWidth="25.0" layoutX="16.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-employees-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageSave" fitHeight="25.0" fitWidth="25.0" layoutX="17.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-save-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageHome" fitHeight="20.0" fitWidth="20.0" layoutX="19.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-dashboard-64.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageSetting" fitHeight="25.0" fitWidth="25.0" layoutX="18.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-setting-100.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imageLogout" fitHeight="25.0" fitWidth="25.0" layoutX="18.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/icons8-log-out-96.png" />
+                  <Image url="@../images/bookstore%20(46).png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-    </children>
+      <AnchorPane fx:id="ancPage" layoutX="61.0" layoutY="1.0" prefHeight="0.0" prefWidth="1477.0" />
+   </children>
 </AnchorPane>

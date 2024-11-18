@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ancOrder" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.OrdersController">
+   <children>
+      <Label layoutX="730.0" layoutY="26.0" text="Manage Order" textFill="#0c86d1">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tblCart" layoutX="34.0" layoutY="302.0" prefHeight="363.0" prefWidth="932.0">
+        <columns>
+          <TableColumn fx:id="colBookId" prefWidth="142.39995956420898" text="Book Id" />
+          <TableColumn fx:id="colName" prefWidth="117.59999084472656" text="Name" />
+            <TableColumn fx:id="colQuantity" prefWidth="180.0" text="Cart Quantity" />
+            <TableColumn fx:id="colPrice" prefWidth="142.4000244140625" text="Unit Price" />
+            <TableColumn fx:id="colTotal" prefWidth="195.19998168945312" text="Total" />
+            <TableColumn fx:id="colAction" prefWidth="157.60003662109375" text="Action" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="690.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bookstore%20(42).png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER_RIGHT" layoutX="467.0" layoutY="280.0" prefHeight="25.0" prefWidth="498.0" spacing="20.0" />
+      <HBox layoutX="68.0" layoutY="71.0" prefHeight="26.0" prefWidth="1340.0" spacing="900.0">
+         <children>
+            <HBox prefHeight="18.0" prefWidth="259.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="100.0" text="Order Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblOrderId" prefHeight="18.0" prefWidth="46.0" text="1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="206.0" spacing="40.0">
+               <children>
+                  <Label text="Order Date">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orderDate" text="2099-01-01" textFill="#0c86d1" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="68.0" layoutY="107.0" prefHeight="26.0" prefWidth="800.0" spacing="40.0">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="310.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="31.0" prefWidth="100.0" text="Customer Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbCustomerId" onAction="#cmbCustomerOnAction" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="456.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="31.0" prefWidth="150.0" text="Customer name">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblCustomerName" prefHeight="26.0" prefWidth="300.0" text="name" textFill="#0c86d1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="68.0" layoutY="145.0" prefHeight="26.0" prefWidth="800.0" spacing="40.0">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="307.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="100.0" text="Book Id">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbBookId" onAction="#cmbBookOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="438.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="146.0" text="book name">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBookName" prefHeight="26.0" prefWidth="279.0" text="name" textFill="#0c86d1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="68.0" layoutY="186.0" prefHeight="26.0" prefWidth="800.0" spacing="40.0">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="308.0" spacing="40.0">
+               <children>
+                  <Label prefWidth="100.0" text="Qty On Hand">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBookQty" prefHeight="18.0" prefWidth="128.0" text="0" textFill="#0c86d1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="26.0" prefWidth="318.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="135.0" text="Unit Price">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblBookPrice" prefHeight="18.0" prefWidth="147.0" text="0.00" textFill="#0c86d1">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="68.0" layoutY="234.0" prefHeight="38.0" prefWidth="897.0" spacing="320.0">
+         <children>
+            <HBox prefHeight="36.0" prefWidth="307.0" spacing="40.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="100.0" text="Quantity">
+                     <font>
+                        <Font name="Calibri" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAddToCartQty" prefWidth="100.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#btnAddToCartOnAction" prefHeight="38.0" prefWidth="272.0" style="-fx-background-color: #0c86d1;" text="Add To Cart" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="576.0" layoutY="700.0" prefHeight="47.0" prefWidth="392.0" spacing="40.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0c86d1;" text="Reset" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0c86d1;" text="Place Order" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
