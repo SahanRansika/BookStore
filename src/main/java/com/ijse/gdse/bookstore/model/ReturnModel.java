@@ -27,7 +27,7 @@ public class ReturnModel {
         return "R001"; // Return the default return ID if no data is found
     }
 
-    public boolean saveOrder(ReturnDTO returnDTO) throws SQLException {
+    public boolean saveReturn(ReturnDTO returnDTO) throws SQLException {
         // @connection: Retrieves the current connection instance for the database
         Connection connection = DBConnection.getInstance().getConnection();
         try {
@@ -36,22 +36,12 @@ public class ReturnModel {
 
             // @isOrderSaved: Saves the order details into the orders table
             boolean isOrderSaved = CrudUtil.execute(
-                    "insert into orders values (?,?,?,?)",
+                    "insert into book_return values (?,?,?,?)",
                     returnDTO.getColBookID(),
                     returnDTO.getColCustomerID(),
                     returnDTO.getColIssueDate(),
                     returnDTO.getColDueDate()
             );
-//            // If the order is saved successfully
-//            if (isOrderSaved) {
-//                // @isOrderDetailListSaved: Saves the list of order details
-//                boolean isOrderDetailListSaved = returnDTO.save(returnDTO.getOrderDetailsDTOS());
-//                if (isOrderDetailListSaved) {
-//                    // @commit: Commits the transaction if both order and details are saved successfully
-//                    connection.commit(); // 2
-//                    return true;
-//                }
-          //  }
             // @rollback: Rolls back the transaction if order details saving fails
             connection.rollback(); // 3
             return false;
@@ -65,4 +55,7 @@ public class ReturnModel {
         }
     }
 
+//    public void returnBook(ArrayList<String> bookIds) throws SQLException {
+//        CrudUtil.execute(""):
+//    }
 }

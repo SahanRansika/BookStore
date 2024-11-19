@@ -170,9 +170,9 @@ public class BookController implements Initializable {
             txtWriter.setText(bookTM.getColWriter());
             txtCategory.setText(bookTM.getColCategory());
             txtPublisher.setText(bookTM.getColPublisher());
-            txtYear.setText(bookTM.getColYear());
-            txtQty.setText(bookTM.getColQty());
-            txtPrice.setText(bookTM.getColPrice());
+            txtYear.setText(String.valueOf(bookTM.getColYear()));
+            txtQty.setText(String.valueOf(bookTM.getColQty()));
+            txtPrice.setText(String.valueOf(bookTM.getColPrice()));
 
             btnSave.setDisable(true);
 
@@ -183,16 +183,26 @@ public class BookController implements Initializable {
 
     @FXML
     void btnSaveOnAction(ActionEvent event) throws SQLException{
+        String bookId = lblBook.getText();
+        String isbn = txtISBN.getText();
+        String title = txtTitle.getText();
+        String writer = txtWriter.getText();
+        String category = txtCategory.getText();
+        String publisher = txtPublisher.getText();
+        int year = Integer.parseInt(txtYear.getText());
+        int qty = Integer.parseInt(txtQty.getText());
+        double price = Double.parseDouble(txtPrice.getText());
+
         BookDTO bookDTO = new BookDTO(
-                lblBook.getText(),
-                txtISBN.getText(),
-                txtTitle.getText(),
-                txtWriter.getText(),
-                txtCategory.getText(),
-                txtPublisher.getText(),
-                txtYear.getText(),
-                txtQty.getText(),
-                txtPrice.getText()
+                bookId,
+                isbn,
+                title,
+                writer,
+                category,
+                publisher,
+                year,
+                qty,
+                price
         );
 
         try {
@@ -210,8 +220,36 @@ public class BookController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+        String bookId = lblBook.getText();
+        String isbn = txtISBN.getText();
+        String title = txtTitle.getText();
+        String writer = txtWriter.getText();
+        String category = txtCategory.getText();
+        String publisher = txtPublisher.getText();
+        int year = Integer.parseInt(txtYear.getText());
+        int qty = Integer.parseInt(txtQty.getText());
+        double price = Double.parseDouble(txtPrice.getText());
 
+        BookDTO bookDTO = new BookDTO(
+                bookId,
+                isbn,
+                title,
+                writer,
+                category,
+                publisher,
+                year,
+                qty,
+                price
+        );
+
+        boolean isUpdate = bookModel.updateBook(bookDTO);
+        if (isUpdate) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Book Update.").show();
+            refreshPage();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Book is not update. Something went wrong.").show();
+        }
     }
 
     @FXML

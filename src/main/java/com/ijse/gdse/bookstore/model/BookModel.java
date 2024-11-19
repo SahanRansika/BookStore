@@ -55,9 +55,9 @@ public class BookModel {
                     rst.getString(4),
                     rst.getString(5),
                     rst.getString(6),
-                    rst.getString(7),
-                    rst.getString(8),
-                    rst.getString(9)
+                    rst.getInt(7),
+                    rst.getInt(8),
+                    rst.getDouble(9)
             );
             bookDTOS.add(bookDTO);
         }
@@ -83,6 +83,21 @@ public class BookModel {
         return result > 0;
     }
 
+    public boolean updateBook(BookDTO bookDTO) throws SQLException {
+        return CrudUtil.execute(
+                "update book set isbn=?, title=?, writer=?, category_name=?, publisher=?, year=?, qty=?, price=? where book_id=?",
+                bookDTO.getColISBN(),
+                bookDTO.getColTitle(),
+                bookDTO.getColWriter(),
+                bookDTO.getColCategory(),
+                bookDTO.getColPublisher(),
+                bookDTO.getColYear(),
+                bookDTO.getColQty(),
+                bookDTO.getColPrice(),
+                bookDTO.getColID()
+        );
+    }
+
     public BookDTO findById(String selectedBookId) throws SQLException {
         // Execute SQL query to find the book by ID
         ResultSet rst = CrudUtil.execute("select * from book where book_id=?", selectedBookId);
@@ -96,9 +111,9 @@ public class BookModel {
                     rst.getString(4),
                     rst.getString(5),
                     rst.getString(6),
-                    rst.getString(7),
-                    rst.getString(8),
-                    rst.getString(9)
+                    rst.getInt(7),
+                    rst.getInt(8),
+                    rst.getDouble(9)
             );
         }
 

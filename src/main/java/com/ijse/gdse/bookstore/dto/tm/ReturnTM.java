@@ -1,6 +1,8 @@
 package com.ijse.gdse.bookstore.dto.tm;
 import lombok.*;
 
+import java.sql.Date;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -9,8 +11,8 @@ import lombok.*;
 public class ReturnTM {
     private String ID;
     private String BookID;
-    private String CustomerID;
-    private String Qty;
-    private String IssueDate;
-    private String DueDate;
+    private String BookName;
+//    private String Qty;
+    private Date IssueDate;
+    private Date DueDate;
 }

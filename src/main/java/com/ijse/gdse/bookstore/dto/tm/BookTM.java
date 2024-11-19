@@ -14,8 +14,8 @@ public class BookTM {
     private String colWriter;
     private String colCategory;
     private String colPublisher;
-    private String colYear;
-    private String colQty;
-    private String colPrice;
+    private int colYear;
+    private int colQty;
+    private double colPrice;
 
 }
