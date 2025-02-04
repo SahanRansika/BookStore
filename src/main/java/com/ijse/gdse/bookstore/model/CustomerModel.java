@@ -63,11 +63,16 @@ public class CustomerModel {
     }
 
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException, ClassNotFoundException{
-        return CrudUtil.execute("update customer set customer_id, customer_name=?, email=?, phone=? where customer_id=?  ",
-                customerDTO.getColID(),
+        return CrudUtil.execute("update customer set customer_name=?, email=?, phone=? where customer_id=?  ",
                 customerDTO.getColName(),
                 customerDTO.getColEmail(),
-                customerDTO.getColPhone());
+                customerDTO.getColPhone(),
+                customerDTO.getColID()
+                );
+    }
+
+    public boolean DeleteCustomer(String customerId) throws SQLException {
+        return CrudUtil.execute("delete from customer where customer_id=?", customerId);
     }
 
     public CustomerDTO findById(String selectedCustomerId) throws SQLException {

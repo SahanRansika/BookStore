@@ -34,6 +34,17 @@ public class CategoryModel {
                 categoryDTO.getColCode());
     }
 
+    public boolean DeleteCategory(String categoryId) throws SQLException {
+        return CrudUtil.execute("delete from category where category_name=?", categoryId);
+    }
+
+    public boolean updateCategory(CategoryDTO categoryDTO) throws SQLException {
+        return CrudUtil.execute("update category set status=?, code=? where category_name=?  ",
+                categoryDTO.getColName(),
+                categoryDTO.getColStatus(),
+                categoryDTO.getColCode()
+        );
+    }
     public ArrayList<CategoryDTO> getAllCategoryIds() throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.execute("SELECT * FROM category");
         ArrayList<CategoryDTO> categoryDTOS = new ArrayList<>();

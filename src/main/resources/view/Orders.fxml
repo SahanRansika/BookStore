@@ -31,7 +31,7 @@
       </TableView>
       <ImageView fitHeight="26.0" fitWidth="30.0" layoutX="690.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/bookstore%20(42).png" />
+            <Image url="@../images/bookstore (42).png" />
          </image>
       </ImageView>
       <HBox alignment="CENTER_RIGHT" layoutX="467.0" layoutY="280.0" prefHeight="25.0" prefWidth="498.0" spacing="20.0" />
@@ -49,16 +49,6 @@
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="26.0" prefWidth="206.0" spacing="40.0">
-               <children>
-                  <Label text="Order Date">
-                     <font>
-                        <Font name="Calibri" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="orderDate" text="2099-01-01" textFill="#0c86d1" />
                </children>
             </HBox>
          </children>
@@ -170,8 +160,13 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="576.0" layoutY="700.0" prefHeight="47.0" prefWidth="392.0" spacing="40.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="417.0" layoutY="700.0" prefHeight="47.0" prefWidth="552.0" spacing="40.0">
          <children>
+            <Button mnemonicParsing="false" onAction="#btnPaymentOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0c86d1;" text="Payment" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
             <Button mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0c86d1;" text="Reset" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
@@ -184,5 +179,30 @@
             </Button>
          </children>
       </HBox>
+      <HBox layoutX="1239.0" layoutY="33.0" prefHeight="26.0" prefWidth="206.0" spacing="40.0">
+         <children>
+            <Label text="Order Date">
+               <font>
+                  <Font name="Calibri Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="orderDate" text="2099-01-01" textFill="#0c86d1">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="ancPrint" layoutX="1104.0" layoutY="79.0" prefHeight="571.0" prefWidth="308.0" />
+      <Button layoutX="1267.0" layoutY="680.0" mnemonicParsing="false" onAction="#btnPrintOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0c86d1;" text="Print" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="1080.0" layoutY="681.0" mnemonicParsing="false" onAction="#btnOrderListOnAction" prefHeight="38.0" prefWidth="165.0" style="-fx-background-color: #0c86d1;" text="Order List" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

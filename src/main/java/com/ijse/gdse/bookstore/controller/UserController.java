@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -141,8 +142,22 @@ public class UserController implements Initializable {
         }
     }
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException{
+        String userId = lblUser.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = userModel.DeleteUser(userId);
+            if (isDeleted) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "User deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete user...!").show();
+            }
+        }
     }
 
     @FXML
@@ -172,7 +187,26 @@ public class UserController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        UserDTO userDTO = new UserDTO(
+                lblUser.getText(),
+                txtName.getText(),
+                txtEmail.getText(),
+                txtPosition.getText(),
+                txtPassword.getText()
+        );
 
+        try {
+            boolean isUpdated = userModel.updateUser(userDTO);
+            if (isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "User Updated.").show();
+                refreshPage();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to update user.").show();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Error updating user data.").show();
+        }
     }
 
     @FXML

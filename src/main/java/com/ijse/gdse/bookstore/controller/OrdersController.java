@@ -1,10 +1,13 @@
 package com.ijse.gdse.bookstore.controller;
 
+import com.ijse.gdse.bookstore.db.DBConnection;
 import com.ijse.gdse.bookstore.dto.BookDTO;
 import com.ijse.gdse.bookstore.dto.CustomerDTO;
 import com.ijse.gdse.bookstore.dto.OrderDTO;
 import com.ijse.gdse.bookstore.dto.OrderDetailsDTO;
 import com.ijse.gdse.bookstore.dto.tm.CartTM;
+import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
+import com.ijse.gdse.bookstore.dto.tm.OrdersTM;
 import com.ijse.gdse.bookstore.model.BookModel;
 import com.ijse.gdse.bookstore.model.CustomerModel;
 import com.ijse.gdse.bookstore.model.OrdersModel;
@@ -12,22 +15,39 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class OrdersController implements Initializable {
 
     @FXML
     private AnchorPane ancOrder;
+
+    @FXML
+    private AnchorPane ancPrint;
+
 
     @FXML
     private ComboBox<String> cmbBookId;
@@ -109,22 +129,13 @@ public class OrdersController implements Initializable {
     }
 
     private void refreshPage() throws SQLException {
-        // Get the next order ID and set it to the label
         lblOrderId.setText(ordersModel.getNextOrderId());
 
-        // Set the current date to the order date label
-//        orderDate.setText(String.valueOf(LocalDate.now()));
         orderDate.setText(LocalDate.now().toString());
 
-        // Load customer and book IDs into ComboBoxes
         loadCustomerIds();
         loadBookIds();
 
-//        ComboBox on action set
-//        cmbCustomerId.setOnAction(e->{
-//            String selectedCusId = cmbCustomerId.getSelectionModel().getSelectedItem();
-//            System.out.println(selectedCusId);
-//        });
 
         // Clear selected customer, item, and their associated labels
         cmbCustomerId.getSelectionModel().clearSelection();
@@ -149,9 +160,7 @@ public class OrdersController implements Initializable {
         cmbBookId.setItems(observableList);
     }
 
-    /**
-     * Load all customer IDs into the customer ComboBox.
-     */
+
     private void loadCustomerIds() throws SQLException {
         ArrayList<String> customerIds = customerModel.getAllCustomerIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
@@ -162,7 +171,7 @@ public class OrdersController implements Initializable {
     void btnAddToCartOnAction(ActionEvent event) {
         String selectedBookId = cmbBookId.getValue();
 
-        // If no item is selected, show an error alert and return
+        // If no book is selected, show an error alert and return
         if (selectedBookId == null) {
             new Alert(Alert.AlertType.ERROR, "Please select book..!").show();
             return; // Exit the method if no item is selected.
@@ -171,10 +180,6 @@ public class OrdersController implements Initializable {
         String cartQtyString = txtAddToCartQty.getText();
 
         String qtyPattern = "^[0-9]+$";
-
-//        String pricePattern = "^(\\d+)||((\\d+\\.)(\\d){2})$";
-//        right :- 500.00. 500.65, 500,
-//        wrong :- 787.8, 6777.9999
 
         if (!cartQtyString.matches(qtyPattern)){
             new Alert(Alert.AlertType.ERROR, "Please enter valid quantity..!").show();
@@ -312,10 +317,7 @@ public class OrdersController implements Initializable {
         }
     }
 
-    /**
-     * This method is called when an book is selected from the item ComboBox.
-     * It retrieves and displays the book's details based on the selected ID.
-     */
+
     @FXML
     void cmbBookOnAction(ActionEvent event) throws SQLException{
         String selectedBookId = cmbBookId.getSelectionModel().getSelectedItem();
@@ -328,6 +330,84 @@ public class OrdersController implements Initializable {
             lblBookName.setText(bookDTO.getColTitle());
             lblBookQty.setText(String.valueOf(bookDTO.getColQty()));
             lblBookPrice.setText(String.valueOf(bookDTO.getColPrice()));
+        }
+    }
+
+    public void btnPaymentOnAction(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Payment.fxml"));
+            Parent load = loader.load();
+
+            PaymentController paymentController = new PaymentController();
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Payment");
+
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
+    }
+
+    public void btnPrintOnAction(ActionEvent event) {
+        CartTM ordersTM = tblCart.getSelectionModel().getSelectedItem();
+
+        if (ordersTM == null) {
+            return;
+        }
+
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass()
+                            .getResourceAsStream("/report/Print.jrxml"
+                            ));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Fail to generate report...!").show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "DB error...!").show();
+        }
+    }
+
+    public void btnOrderListOnAction(ActionEvent event) {
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass()
+                            .getResourceAsStream("/report/OrderDeatails.jrxml"
+                            ));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Fail to generate report...!").show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "DB error...!").show();
         }
     }
 }

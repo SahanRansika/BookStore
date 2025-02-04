@@ -2,6 +2,7 @@ package com.ijse.gdse.bookstore.model;
 
 import com.ijse.gdse.bookstore.db.DBConnection;
 import com.ijse.gdse.bookstore.dto.BookDTO;
+import com.ijse.gdse.bookstore.dto.CategoryDTO;
 import com.ijse.gdse.bookstore.dto.OrderDetailsDTO;
 import com.ijse.gdse.bookstore.util.CrudUtil;
 
@@ -98,6 +99,10 @@ public class BookModel {
         );
     }
 
+    public boolean DeleteBook(String bookId) throws SQLException {
+        return CrudUtil.execute("delete from book where book_id=?", bookId);
+    }
+
     public BookDTO findById(String selectedBookId) throws SQLException {
         // Execute SQL query to find the book by ID
         ResultSet rst = CrudUtil.execute("select * from book where book_id=?", selectedBookId);
@@ -120,6 +125,7 @@ public class BookModel {
         // Return null if the book is not found
         return null;
     }
+
     public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
         // Execute SQL query to update the book quantity in the database
         return CrudUtil.execute(

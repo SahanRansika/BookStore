@@ -14,11 +14,11 @@
 
 <AnchorPane fx:id="ancCategory" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.CategoryController">
    <children>
-      <TableView fx:id="tblCategory" layoutX="35.0" layoutY="288.0" onMouseClicked="#onClickTable" prefHeight="454.0" prefWidth="873.0">
+      <TableView fx:id="tblCategory" layoutX="99.0" layoutY="288.0" onMouseClicked="#onClickTable" prefHeight="454.0" prefWidth="1064.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="289.6000175476074" text="Name" />
-          <TableColumn fx:id="colStatus" prefWidth="266.4000244140625" text="Status" />
-            <TableColumn fx:id="colCode" prefWidth="316.7999267578125" text="Code" />
+          <TableColumn fx:id="colName" prefWidth="379.1999931335449" text="Name" />
+          <TableColumn fx:id="colStatus" prefWidth="362.39996337890625" text="Status" />
+            <TableColumn fx:id="colCode" prefWidth="386.39996337890625" text="Code" />
         </columns>
       </TableView>
       <Label layoutX="672.0" layoutY="38.0" text="Manage Category" textFill="#0c86d1">
@@ -31,7 +31,7 @@
             <Image url="@../images/category1.png" />
          </image>
       </ImageView>
-      <HBox alignment="CENTER_RIGHT" layoutX="385.0" layoutY="240.0" prefHeight="26.0" prefWidth="524.0" spacing="20.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="639.0" layoutY="238.0" prefHeight="26.0" prefWidth="524.0" spacing="20.0">
          <children>
             <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #1d7ebf;" text="Reset" textFill="WHITE">
                <font>

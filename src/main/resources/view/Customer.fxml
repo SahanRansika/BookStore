@@ -21,46 +21,51 @@
       </Label>
       <ImageView fitHeight="26.0" fitWidth="26.0" layoutX="690.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/bookstore%20(8).png" />
+            <Image url="@../images/bookstore (8).png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblCustomer" layoutX="85.0" layoutY="366.0" onMouseClicked="#onClickTable" prefHeight="406.0" prefWidth="1000.0">
+      <TableView fx:id="tblCustomer" layoutX="85.0" layoutY="460.0" onMouseClicked="#onClickTable" prefHeight="312.0" prefWidth="1206.0">
         <columns>
           <TableColumn fx:id="colID" prefWidth="172.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="264.0" text="Name" />
-            <TableColumn fx:id="colEmail" prefWidth="319.20001220703125" text="Email" />
-            <TableColumn fx:id="colPhone" prefWidth="244.79995727539062" text="Phone" />
+          <TableColumn fx:id="colName" prefWidth="366.3999938964844" text="Name" />
+            <TableColumn fx:id="colEmail" prefWidth="341.5999755859375" text="Email" />
+            <TableColumn fx:id="colPhone" prefWidth="327.199951171875" text="Phone" />
         </columns>
       </TableView>
-      <HBox alignment="CENTER_RIGHT" layoutX="618.0" layoutY="316.0" prefHeight="26.0" prefWidth="467.0" spacing="20.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="85.0" layoutY="316.0" prefHeight="26.0" prefWidth="1206.0" spacing="20.0">
          <children>
-            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#orderReportOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2d72f2;" text="Order Report" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Update" textFill="WHITE">
+            <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: #2d72f2;" text="Delete" textFill="WHITE">
+            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2d72f2;" text="Update" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: #2d72f2;" text="Save" textFill="WHITE">
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2d72f2;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #2d72f2;" text="Save" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="85.0" layoutY="89.0" prefHeight="216.0" prefWidth="542.0">
+      <VBox layoutX="85.0" layoutY="113.0" prefHeight="192.0" prefWidth="542.0">
          <children>
-            <HBox prefHeight="38.0" prefWidth="542.0" spacing="10.0">
+            <HBox prefHeight="38.0" prefWidth="542.0" spacing="40.0">
                <children>
-                  <Label prefHeight="26.0" prefWidth="150.0" text="Customer Id">
+                  <Label prefHeight="26.0" prefWidth="80.0" text="Customer Id">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
@@ -68,37 +73,51 @@
                   <Label fx:id="lblCustomer" prefHeight="26.0" prefWidth="57.0" text="1" />
                </children>
             </HBox>
-            <HBox prefHeight="42.0" prefWidth="542.0" spacing="10.0">
+            <HBox prefHeight="42.0" prefWidth="542.0" spacing="40.0">
                <children>
-                  <Label prefHeight="43.0" prefWidth="41.0" text="Name">
+                  <Label prefHeight="42.0" prefWidth="80.0" text="Name">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtName" prefHeight="26.0" prefWidth="487.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+                  <TextField fx:id="txtName" prefHeight="26.0" prefWidth="376.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
                </children>
             </HBox>
-            <HBox prefHeight="41.0" prefWidth="542.0" spacing="10.0">
+            <HBox prefHeight="41.0" prefWidth="542.0" spacing="40.0">
                <children>
-                  <Label prefHeight="43.0" prefWidth="42.0" text="Email">
+                  <Label prefHeight="43.0" prefWidth="80.0" text="Email">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmail" prefHeight="26.0" prefWidth="490.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+                  <TextField fx:id="txtEmail" prefHeight="26.0" prefWidth="377.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
                </children>
             </HBox>
-            <HBox prefHeight="49.0" prefWidth="542.0" spacing="10.0">
+            <HBox prefHeight="49.0" prefWidth="542.0" spacing="40.0">
                <children>
-                  <Label prefHeight="53.0" prefWidth="42.0" text="Phone">
+                  <Label prefHeight="53.0" prefWidth="80.0" text="Phone">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtPhone" prefHeight="26.0" prefWidth="486.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
+                  <TextField fx:id="txtPhone" prefHeight="26.0" prefWidth="382.0" style="-fx-background-color: white; -fx-border-color: blue; -fx-border-width: 0 0 1px 0;" />
                </children>
             </HBox>
          </children>
       </VBox>
+      <HBox layoutX="89.0" layoutY="371.0" prefHeight="42.0" prefWidth="842.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#generateAllCustomerReportOnAction" prefHeight="32.0" prefWidth="442.0" style="-fx-background-color: white; -fx-border-color: blue;" text="Generate All Customer Report" textFill="BLUE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#openSendMailModel" prefHeight="32.0" prefWidth="242.0" style="-fx-background-color: #3daeff;" text="Open mail send model" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

@@ -1,22 +1,35 @@
 package com.ijse.gdse.bookstore.controller;
 
+import com.ijse.gdse.bookstore.db.DBConnection;
+import com.ijse.gdse.bookstore.dto.CustomerDTO;
+import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
+import com.ijse.gdse.bookstore.model.CustomerModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import com.ijse.gdse.bookstore.dto.CustomerDTO;
-import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
-import com.ijse.gdse.bookstore.model.CustomerModel;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
+import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
+
 
 public class CustomerController implements Initializable {
 
@@ -36,16 +49,16 @@ public class CustomerController implements Initializable {
     private Button btnReset;
 
     @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<CustomerTM, String> colEmail;
 
     @FXML
-    private TableColumn<?, ?> colID;
+    private TableColumn<CustomerTM, String> colID;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<CustomerTM, String> colName;
 
     @FXML
-    private TableColumn<?, ?> colPhone;
+    private TableColumn<CustomerTM, String> colPhone;
 
     @FXML
     private TableView<CustomerTM> tblCustomer;
@@ -128,9 +141,44 @@ public class CustomerController implements Initializable {
             txtPhone.setText(customerTM.getPhone());
 
             btnSave.setDisable(true);
-
             btnDelete.setDisable(false);
             btnUpdate.setDisable(false);
+        }
+    }
+
+    @FXML
+    public void orderReportOnAction(ActionEvent actionEvent) {
+        CustomerTM customerTM = tblCustomer.getSelectionModel().getSelectedItem();
+
+        if (customerTM == null) {
+            return;
+        }
+
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass()
+                            .getResourceAsStream("/report/Test.jrxml"
+                            ));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            Map<String, Object> parameters = new HashMap<>();
+
+            parameters.put("P_Date", LocalDate.now().toString());
+            parameters.put("P_Customer_Id", customerTM.getCustomerId());
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Fail to generate report...!").show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "DB error...!").show();
         }
     }
     @FXML
@@ -140,14 +188,6 @@ public class CustomerController implements Initializable {
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
 
-//        [A-Za-z ]+
-//        (1)
-//        Pattern namePattern = Pattern.compile("^[A-Za-z ]+$");
-//        boolean isValidName = namePattern.matcher(name).matches();
-//        System.out.println("method 1 : "+isValidName);
-
-//        (2)
-//        System.out.println("method 2 : "+name.matches("^[A-Za-z ]+$"));
 
         txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
         txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
@@ -197,7 +237,21 @@ public class CustomerController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws SQLException {
+        String customerId = lblCustomer.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = customerModel.DeleteCustomer(customerId);
+            if (isDeleted) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "Customer deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete customer...!").show();
+            }
+        }
     }
 
     @FXML
@@ -225,6 +279,63 @@ public class CustomerController implements Initializable {
     @FXML
     void btnResetOnAction(ActionEvent event) throws SQLException {
         refreshPage();
+    }
+
+    public void generateAllCustomerReportOnAction(ActionEvent event) {
+        try {
+            JasperReport jasperReport = JasperCompileManager.compileReport(
+                    getClass()
+                            .getResourceAsStream("/report/report.jrxml"
+                            ));
+
+            Connection connection = DBConnection.getInstance().getConnection();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    null,
+                    connection
+            );
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to generate report...!").show();
+//           e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "DB error...!").show();
+        }
+
+
+}
+
+    public void openSendMailModel(ActionEvent event) {
+        CustomerTM selectedItem = tblCustomer.getSelectionModel().getSelectedItem();
+        if (selectedItem == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select student!");
+            return;
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SendMailView.fxml"));
+            Parent load = loader.load();
+
+            SendMailController sendMailController = loader.getController();
+
+            String email = selectedItem.getEmail();
+            sendMailController.setStudentEmail(email);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Send email");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            Window underWindow = btnUpdate.getScene().getWindow();
+            stage.initOwner(underWindow);
+
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
     }
 }
 

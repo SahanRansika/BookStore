@@ -54,8 +54,4 @@ public class ReturnModel {
             connection.setAutoCommit(true); // 4
         }
     }
-
-//    public void returnBook(ArrayList<String> bookIds) throws SQLException {
-//        CrudUtil.execute(""):
-//    }
 }

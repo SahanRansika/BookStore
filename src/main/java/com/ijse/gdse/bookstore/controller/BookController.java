@@ -2,7 +2,6 @@ package com.ijse.gdse.bookstore.controller;
 
 import com.ijse.gdse.bookstore.dto.BookDTO;
 import com.ijse.gdse.bookstore.dto.tm.BookTM;
-import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
 import com.ijse.gdse.bookstore.model.BookModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class BookController implements Initializable {
@@ -67,10 +67,10 @@ public class BookController implements Initializable {
     private TableView<BookTM> tblBook;
 
     @FXML
-    private TextField txtCategory;
+    private Label lblBook;
 
     @FXML
-    private Label lblBook;
+    private TextField txtCategory;
 
     @FXML
     private TextField txtISBN;
@@ -114,7 +114,7 @@ public class BookController implements Initializable {
         }
     }
 
-    private void refreshPage() throws SQLException {
+        private void refreshPage() throws SQLException {
         loadNextBookId();
         loadTableData();
 
@@ -253,12 +253,31 @@ public class BookController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException{
+        String bookId = lblBook.getText();
+        System.out.println(bookId);
 
-    }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = bookModel.DeleteBook(bookId);
+            if (isDeleted) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "Book deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete book...!").show();
+            }
+        }
+        }
+
+
 
     @FXML
     void btnResetOnAction(ActionEvent event) throws SQLException {
         refreshPage();
     }
+
+
 }

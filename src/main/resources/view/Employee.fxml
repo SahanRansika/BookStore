@@ -19,13 +19,13 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tblEmployee" layoutX="43.0" layoutY="339.0" onMouseClicked="#onClickTable" prefHeight="438.0" prefWidth="973.0">
+      <TableView fx:id="tblEmployee" layoutX="107.0" layoutY="347.0" onMouseClicked="#onClickTable" prefHeight="438.0" prefWidth="1187.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="135.20000839233398" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="145.6000213623047" text="Name" />
-            <TableColumn fx:id="colPhone" prefWidth="232.80001831054688" text="Phone" />
-            <TableColumn fx:id="colPosition" prefWidth="223.20001220703125" text="Position" />
-            <TableColumn fx:id="colSalary" prefWidth="238.4000244140625" text="Salary" />
+          <TableColumn fx:id="colID" prefWidth="144.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="278.40000915527344" text="Name" />
+            <TableColumn fx:id="colPhone" prefWidth="265.5999755859375" text="Phone" />
+            <TableColumn fx:id="colPosition" prefWidth="264.0001220703125" text="Position" />
+            <TableColumn fx:id="colSalary" prefWidth="240.0" text="Salary" />
         </columns>
       </TableView>
       <ImageView fitHeight="26.0" fitWidth="29.0" layoutX="690.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -91,7 +91,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="617.0" layoutY="289.0" prefHeight="25.0" prefWidth="400.0" spacing="20.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="894.0" layoutY="302.0" prefHeight="25.0" prefWidth="400.0" spacing="20.0">
          <children>
             <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
                <font>

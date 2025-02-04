@@ -15,13 +15,13 @@
 
 <AnchorPane fx:id="ancReturn" prefHeight="800.0" prefWidth="1460.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.ReturnController">
    <children>
-      <TableView fx:id="tblReturn" layoutX="33.0" layoutY="320.0" onMouseClicked="#onClickTable" prefHeight="318.0" prefWidth="1004.0">
+      <TableView fx:id="tblReturn" layoutX="97.0" layoutY="320.0" onMouseClicked="#onClickTable" prefHeight="318.0" prefWidth="1242.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="122.40002059936523" text="Return Id" />
-          <TableColumn fx:id="colBookID" prefWidth="139.1999969482422" text="Book Id" />
-            <TableColumn fx:id="colName" prefWidth="237.5999755859375" text="Name" />
-            <TableColumn fx:id="colIssueDate" prefWidth="256.79998779296875" text="Issue Date" />
-            <TableColumn fx:id="colDueDate" prefWidth="249.5999755859375" text="Due Date" />
+          <TableColumn fx:id="colID" prefWidth="166.40001678466797" text="Return Id" />
+          <TableColumn fx:id="colBookID" prefWidth="165.60000610351562" text="Book Id" />
+            <TableColumn fx:id="colName" prefWidth="321.5999755859375" text="Name" />
+            <TableColumn fx:id="colIssueDate" prefWidth="282.4000244140625" text="Issue Date" />
+            <TableColumn fx:id="colDueDate" prefWidth="309.599853515625" text="Due Date" />
         </columns>
       </TableView>
       <Label layoutX="298.0" layoutY="93.0">
@@ -64,7 +64,7 @@
                               <Font name="Calibri" size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmbCustomerId" onAction="#cmbCustomerOnAction" prefWidth="150.0" />
+                        <ComboBox fx:id="cmbCustomerId" onAction="#cmbCustomerOnAction" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
                      </children>
                   </HBox>
                   <HBox prefHeight="38.0" prefWidth="364.0" spacing="40.0">
@@ -92,7 +92,7 @@
                               <Font name="Calibri" size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cmbBookId" onAction="#cmbBookOnAction" prefWidth="150.0" />
+                        <ComboBox fx:id="cmbBookId" onAction="#cmbBookOnAction" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
                      </children>
                   </HBox>
                   <HBox prefHeight="40.0" prefWidth="496.0" spacing="40.0">
@@ -118,7 +118,7 @@
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="IssueDate" prefWidth="150.0" />
+                  <DatePicker fx:id="IssueDate" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
                </children>
             </HBox>
             <HBox prefHeight="34.0" prefWidth="470.0" spacing="40.0">
@@ -128,12 +128,12 @@
                         <Font name="Calibri" size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="DueDate" prefWidth="150.0" />
+                  <DatePicker fx:id="DueDate" prefWidth="150.0" style="-fx-background-color: white; -fx-border-color: #0c86d1; -fx-border-width: 0 0 1px 0;" />
                </children>
             </HBox>
          </children>
       </VBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="734.0" layoutY="258.0" prefHeight="42.0" prefWidth="302.0" spacing="450.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="1036.0" layoutY="265.0" prefHeight="42.0" prefWidth="302.0" spacing="450.0">
          <children>
             <Button mnemonicParsing="false" onAction="#btnAddToReturnOnAction" prefHeight="42.0" prefWidth="256.0" style="-fx-background-color: #2d72f2;" text="Add To Return" textFill="WHITE">
                <font>
@@ -142,7 +142,7 @@
             </Button>
          </children>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="477.0" layoutY="662.0" prefHeight="50.0" prefWidth="558.0" spacing="40.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="783.0" layoutY="663.0" prefHeight="50.0" prefWidth="558.0" spacing="40.0">
          <children>
             <Button fx:id="btnReset" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="42.0" prefWidth="150.0" style="-fx-background-color: blue;" text="Reset" textFill="WHITE">
                <font>

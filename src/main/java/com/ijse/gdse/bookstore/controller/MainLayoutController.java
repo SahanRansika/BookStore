@@ -3,6 +3,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -93,7 +95,34 @@ public class MainLayoutController implements Initializable {
         public void btnEmployeeOnAction(MouseEvent mouseEvent) {navigateTo("/view/Employee.fxml");}
 
 
-        public void btnLogOutOnAction(MouseEvent mouseEvent) {System.exit(0);}
+        public void btnLogOutOnAction(MouseEvent mouseEvent) {
+                try {
+                        // Create a confirmation alert
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Logout Confirmation");
+                        alert.setHeaderText("Are you sure you want to log out?");
+
+                        // Add Yes and No buttons
+                        ButtonType yesButton = new ButtonType("Exit", ButtonBar.ButtonData.YES);
+                        ButtonType noButton = new ButtonType("No", ButtonBar.ButtonData.NO);
+                        alert.getButtonTypes().setAll(yesButton, noButton);
+
+                        // Display the alert and wait for a response
+                        var result = alert.showAndWait();
+
+                        if (result.isPresent() && result.get() == yesButton) {
+                                // Exit the application
+                                System.exit(0);
+                        } else {
+                                // Close the alert (No action needed)
+                                alert.close();
+                        }
+                } catch (Exception e) {
+                        // Handle any unexpected exceptions
+                        new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+                }
+        }
+
 
         public void btnUserOnAction(MouseEvent mouseEvent) {navigateTo("/view/User.fxml");}
 }

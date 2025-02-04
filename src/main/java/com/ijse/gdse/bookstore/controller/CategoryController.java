@@ -2,6 +2,7 @@ package com.ijse.gdse.bookstore.controller;
 
 
 import com.ijse.gdse.bookstore.dto.CategoryDTO;
+import com.ijse.gdse.bookstore.dto.CustomerDTO;
 import com.ijse.gdse.bookstore.dto.tm.CategoryTM;
 import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
 import com.ijse.gdse.bookstore.model.CategoryModel;
@@ -18,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class CategoryController implements Initializable {
@@ -124,8 +126,22 @@ public class CategoryController implements Initializable {
     }
 
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException{
+        String categoryId = lblCategory.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = categoryModel.DeleteCategory(categoryId);
+            if (isDeleted) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "Category deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete category...!").show();
+            }
+        }
     }
 
     @FXML
@@ -152,8 +168,20 @@ public class CategoryController implements Initializable {
 
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+        CategoryDTO categoryDTO = new CategoryDTO(
+                lblCategory.getText(),
+                txtName.getText(),
+                txtStatus.getText()
+        );
 
+        boolean isUpdate = categoryModel.updateCategory(categoryDTO);
+        if (isUpdate) {
+            new Alert(Alert.AlertType.CONFIRMATION, "Category Update.").show();
+            refreshPage();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Category is not update. Something went wrong.").show();
+        }
     }
 
     @FXML

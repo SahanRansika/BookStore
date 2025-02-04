@@ -2,15 +2,11 @@ package com.ijse.gdse.bookstore.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class PaymentController {
 
@@ -24,56 +20,56 @@ public class PaymentController {
     private Button btnClose;
 
     @FXML
-    private Button btnPrint;
-
-    @FXML
-    private Button btnUpdate;
+    private Button btnReset;
 
     @FXML
     private TextField txtAmount;
 
     @FXML
-    private TextField txtCustId;
+    private Label txtDue;
 
     @FXML
-    private TextField txtDue;
+    private TextField txtTotal;
 
-    @FXML
-    private TextField txtOrderId;
-
-    @FXML
-    private TextField txtPaydate;
-
-    @FXML
-    private TextField txtPrice;
-
-    @FXML
-    private TextField txtQty;
 
     @FXML
     void btnBuyOnAction(ActionEvent event) {
+        try {
+            double total = Double.parseDouble(txtTotal.getText());
+            double amount = Double.parseDouble(txtAmount.getText());
 
+            if (amount >= total) {
+                txtDue.setText("No Due");
+                showAlert("Payment Successful", "Thank you for your purchase!");
+            } else {
+                double due = total - amount;
+                txtDue.setText("Due:           " + String.format("%.2f", due));
+                showAlert("Payment Incomplete", "You still owe: " + String.format("%.2f", due));
+            }
+        } catch (NumberFormatException e) {
+            showAlert("Error", "Please enter valid numeric values in the fields.");
+        }
     }
+
 
     @FXML
-    void btnCloseOnAction(ActionEvent event) throws IOException {
-// Load the FXML file as a new scene
-        AnchorPane newPane = FXMLLoader.load(getClass().getResource("/view/Orders.fxml"));
-        Scene newScene = new Scene(newPane);
-
-        // Get the current stage from the event's source (the button) and set the new scene
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        currentStage.setScene(newScene);
+    void btnCloseOnAction(ActionEvent event) {
+        ancPayment.getScene().getWindow().hide(); // Hides the current window
     }
+
 
     @FXML
-    void btnPrintOnAction(ActionEvent event) {
-
+    void btnResetInAction(ActionEvent event) {
+        txtAmount.clear();
+        txtTotal.clear();
+        txtDue.setText("");
     }
 
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
 
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
-
 }

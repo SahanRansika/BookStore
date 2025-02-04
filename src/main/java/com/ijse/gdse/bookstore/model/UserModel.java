@@ -34,6 +34,20 @@ public class UserModel {
                 userDTO.getColPosition(),
                 userDTO.getColPassword());
     }
+
+    public boolean updateUser(UserDTO userDTO) throws SQLException {
+        return CrudUtil.execute("update user set username=?, email=?, position=? ,password=? where user_id=?  ",
+                userDTO.getColID(),
+                userDTO.getColName(),
+                userDTO.getColEmail(),
+                userDTO.getColPosition(),
+                userDTO.getColPassword());
+    }
+
+    public boolean DeleteUser(String userId) throws SQLException {
+        return CrudUtil.execute("delete from user where user_id=?", userId);
+    }
+
     public ArrayList<UserDTO> getAllUserIds() throws SQLException, ClassNotFoundException {
         ResultSet rst = CrudUtil.execute("SELECT * FROM user");
         ArrayList<UserDTO> userDTOS = new ArrayList<>();

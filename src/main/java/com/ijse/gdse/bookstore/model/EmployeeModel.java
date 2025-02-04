@@ -1,6 +1,7 @@
 package com.ijse.gdse.bookstore.model;
 
 import com.ijse.gdse.bookstore.db.DBConnection;
+import com.ijse.gdse.bookstore.dto.CustomerDTO;
 import com.ijse.gdse.bookstore.dto.EmployeeDTO;
 import com.ijse.gdse.bookstore.util.CrudUtil;
 
@@ -33,6 +34,20 @@ public class EmployeeModel {
                 employeeDTO.getColPhone(),
                 employeeDTO.getColPosition(),
                 employeeDTO.getColSalary());
+    }
+
+    public boolean EmployeeUpdate(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException{
+        return CrudUtil.execute("update employee set employee_name=?, phone=?, position=?, salary=? where employee_id=?  ",
+                employeeDTO.getColName(),
+                employeeDTO.getColPhone(),
+                employeeDTO.getColPosition(),
+                employeeDTO.getColSalary(),
+                employeeDTO.getColID()
+                );
+    }
+
+    public boolean DeleteEmployee(String employeeId) throws SQLException {
+        return CrudUtil.execute("delete from employee where employee_Id=?", employeeId);
     }
 
     public ArrayList<EmployeeDTO> getAllEmployeeIds() throws SQLException, ClassNotFoundException {

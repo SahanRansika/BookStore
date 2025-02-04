@@ -171,7 +171,6 @@ public class ReturnController implements Initializable {
 
     }
 
-
     @FXML
     void btnResetOnAction(ActionEvent event) throws SQLException{
         refreshPage();

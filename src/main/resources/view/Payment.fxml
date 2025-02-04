@@ -8,60 +8,37 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ancPayment" prefHeight="479.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.PaymentController">
+<AnchorPane fx:id="ancPayment" prefHeight="479.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.gdse.bookstore.controller.PaymentController">
    <children>
       <Label layoutX="234.0" layoutY="27.0" text="Manage Payment" textFill="#0c86d1">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="101.0" text="Payment Id">
+      <Label layoutX="82.0" layoutY="194.0" text="Amount">
          <font>
-            <Font name="Arial Bold" size="12.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="77.0" layoutY="169.0" text="Customer Id">
+      <Label layoutX="95.0" layoutY="246.0">
          <font>
-            <Font name="Arial Bold" size="12.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="203.0" text="Order Id">
+      <Label layoutX="91.0" layoutY="155.0" text="Total">
          <font>
-            <Font name="Arial Bold" size="12.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="81.0" layoutY="305.0" text="Amount">
+      <TextField fx:id="txtTotal" layoutX="183.0" layoutY="150.0">
          <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="82.0" layoutY="342.0" text="Due">
+            <Font name="Arial Bold" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="txtAmount" layoutX="183.0" layoutY="189.0">
          <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="80.0" layoutY="135.0" text="Payment Date">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label layoutX="80.0" layoutY="235.0" text="price">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtPaydate" layoutX="176.0" layoutY="130.0" />
-      <TextField fx:id="txtCustId" layoutX="176.0" layoutY="164.0" />
-      <TextField fx:id="txtOrderId" layoutX="176.0" layoutY="198.0" />
-      <TextField fx:id="txtPrice" layoutX="175.0" layoutY="230.0" />
-      <TextField fx:id="txtAmount" layoutX="174.0" layoutY="300.0" />
-      <TextField fx:id="txtDue" layoutX="174.0" layoutY="337.0" />
-      <Label layoutX="176.0" layoutY="101.0" text="P001">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnUpdate" layoutX="148.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #2d72f2;" text="Update" textFill="WHITE">
+            <Font name="Arial Bold" size="18.0" />
+         </font></TextField>
+      <Button fx:id="btnReset" layoutX="148.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnResetInAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #2d72f2;" text="Reset" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
@@ -71,18 +48,7 @@
             <Font name="Arial Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnPrint" layoutX="351.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnPrintOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #2d72f2;" text="Print" textFill="WHITE">
-         <font>
-            <Font name="Arial Bold" size="14.0" />
-         </font>
-      </Button>
-      <Label layoutX="80.0" layoutY="271.0" text="Quantity">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Label>
-      <TextField fx:id="txtQty" layoutX="174.0" layoutY="266.0" />
-      <Button fx:id="btnBuy" layoutX="466.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnBuyOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #2d72f2;" text="Buy" textFill="WHITE">
+      <Button fx:id="btnBuy" layoutX="348.0" layoutY="398.0" mnemonicParsing="false" onAction="#btnBuyOnAction" prefHeight="26.0" prefWidth="84.0" style="-fx-background-color: #2d72f2;" text="Buy" textFill="WHITE">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font>
@@ -92,5 +58,9 @@
             <Image url="@../images/payment.png" />
          </image>
       </ImageView>
+      <Label fx:id="txtDue" layoutX="84.0" layoutY="231.0" prefHeight="42.0" prefWidth="322.0" textFill="BLUE">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font></Label>
    </children>
 </AnchorPane>

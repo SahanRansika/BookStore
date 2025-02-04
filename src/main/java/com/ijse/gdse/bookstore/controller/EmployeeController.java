@@ -1,5 +1,6 @@
 package com.ijse.gdse.bookstore.controller;
 
+import com.ijse.gdse.bookstore.dto.CustomerDTO;
 import com.ijse.gdse.bookstore.dto.EmployeeDTO;
 import com.ijse.gdse.bookstore.dto.tm.CustomerTM;
 import com.ijse.gdse.bookstore.dto.tm.EmployeeTM;
@@ -17,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
@@ -142,8 +144,22 @@ public class EmployeeController implements Initializable {
         }
     }
     @FXML
-    void btnDeleteOnAction(ActionEvent event) {
+    void btnDeleteOnAction(ActionEvent event) throws SQLException{
+        String employeeId = lblEmployee.getText();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = employeeModel.DeleteEmployee(employeeId);
+            if (isDeleted) {
+                refreshPage();
+                new Alert(Alert.AlertType.INFORMATION, "Employee deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete employee...!").show();
+            }
+        }
     }
 
     @FXML
@@ -174,7 +190,26 @@ public class EmployeeController implements Initializable {
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        EmployeeDTO employeeDTO = new EmployeeDTO(
+                lblEmployee.getText(),
+                txtName.getText(),
+                txtPhone.getText(),
+                txtPosition.getText(),
+                txtSalary.getText()
+        );
 
+        try {
+            boolean isUpdate = employeeModel.EmployeeUpdate(employeeDTO);
+            if (isUpdate) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Employee Update.").show();
+                refreshPage();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Employee is not update. Something went wrong.").show();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Error updating employee data.").show();
+        }
     }
 
     @FXML
