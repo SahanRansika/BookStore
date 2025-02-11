@@ -34,6 +34,7 @@ public class OrdersModel {
     public boolean saveOrder(OrderDTO orderDTO) throws SQLException {
         // @connection: Retrieves the current connection instance for the database
         Connection connection = DBConnection.getInstance().getConnection();
+        System.out.println(orderDTO);
         try {
             // @autoCommit: Disables auto-commit to manually control the transaction
             connection.setAutoCommit(false); // 1
